@@ -4,11 +4,12 @@ import CalendarComponent from '../components/CalendarComponent';
 
 const Calendar = () => {
     const [selectedDate, setSelectedDate] = useState('');
+    const currentYear = new Date().getFullYear();
 
     return (
         <SafeAreaView>
             <Container>
-                <Header>My Calendar</Header>
+                <Header>{currentYear}</Header>
                 <CalendarComponent
                     selectedDate={selectedDate}
                     onDayPress={(day) => setSelectedDate(day.dateString)}
