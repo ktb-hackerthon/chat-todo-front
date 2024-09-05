@@ -1,37 +1,36 @@
-name: Build and Deploy Android App
+name: Deploy to S3
 
 on:
   push:
     branches:
-      - main
+      - main  # main 브랜치에 푸시될 때마다 실행
       - feature-ci-cd
-
+      
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
+    - name: Install Node.js
+      uses: actions/setup-node@v3
       with:
-        java-version: '11'
+        node-version: '22'  # Node.js 버전
 
     - name: Install dependencies
       run: |
         npm install
 
-    - name: Build Android App
+    - name: Build React Native project
       run: |
-        cd android
-        ./gradlew assembleRelease
+        npm run build  # 프로젝트에 맞게 수정
 
-    - name: Upload to S3
+    - name: Sync files to S3
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
-        aws s3 cp ./android/app/build/outputs/apk/release/app-release.apk s3://chat-todo/ --acl public-read
+        aws s3 sync ./build s3://chat-todo --delete --acl public-read
