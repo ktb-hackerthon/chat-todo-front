@@ -1,13 +1,13 @@
-current directory: /Users/ellie/ChatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20240905-69408-1j6qizr.rb extconf.rb
+current directory: /Users/ellie/chatTodoFront/chatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20240905-80303-hwq3kf.rb extconf.rb
 creating Makefile
 
-current directory: /Users/ellie/ChatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
+current directory: /Users/ellie/chatTodoFront/chatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
 make "DESTDIR=" clean
 
-current directory: /Users/ellie/ChatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
+current directory: /Users/ellie/chatTodoFront/chatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
 make "DESTDIR="
 make: Nothing to be done for `all'.
 
-current directory: /Users/ellie/ChatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
+current directory: /Users/ellie/chatTodoFront/chatTodoFront/vendor/bundle/ruby/2.6.0/gems/json-2.7.2/ext/json
 make "DESTDIR=" install

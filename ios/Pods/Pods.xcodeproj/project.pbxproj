@@ -2056,8 +2056,8 @@
 		46EB2E000188C0 /* vlog_is_on.h in Headers */ = {isa = PBXBuildFile; fileRef = 46EB2E0000D000 /* vlog_is_on.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		46EB2E00018910 /* glog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46EB2E00018900 /* glog-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		46EB2E00018940 /* glog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB2E00018930 /* glog-dummy.m */; };
-		46EB2E00018AD0 /* Pods-ChatTodoFront-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB2E00018AC0 /* Pods-ChatTodoFront-dummy.m */; };
-		46EB2E00018BE0 /* Pods-ChatTodoFront-ChatTodoFrontTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB2E00018BD0 /* Pods-ChatTodoFront-ChatTodoFrontTests-dummy.m */; };
+		46EB2E00018AD0 /* Pods-chatTodoFront-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB2E00018AC0 /* Pods-chatTodoFront-dummy.m */; };
+		46EB2E00018BE0 /* Pods-chatTodoFront-chatTodoFrontTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB2E00018BD0 /* Pods-chatTodoFront-chatTodoFrontTests-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -6334,7 +6334,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00297960BCA5A5C180B1FDE256194EB5 /* Pods-ChatTodoFront-ChatTodoFrontTests */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-ChatTodoFront-ChatTodoFrontTests"; path = "libPods-ChatTodoFront-ChatTodoFrontTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B78B62C0667993F995391A857DB2CE2 /* React-domnativemodule */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-domnativemodule"; path = "libReact-domnativemodule.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CEF74A24ECE8AEEF7B1E27B305D2DDC /* ReactCodegen */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = ReactCodegen; path = libReactCodegen.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1381503C42FFF460E946860A32A6F981 /* React-RuntimeApple */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RuntimeApple"; path = "libReact-RuntimeApple.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9880,20 +9879,20 @@
 		46EB2E000189A0 /* hermes-engine-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "hermes-engine-xcframeworks.sh"; sourceTree = "<group>"; };
 		46EB2E000189B0 /* hermes-engine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "hermes-engine.debug.xcconfig"; sourceTree = "<group>"; };
 		46EB2E000189C0 /* hermes-engine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "hermes-engine.release.xcconfig"; sourceTree = "<group>"; };
-		46EB2E00018A60 /* Pods-ChatTodoFront.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatTodoFront.release.xcconfig"; sourceTree = "<group>"; };
-		46EB2E00018A70 /* Pods-ChatTodoFront.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatTodoFront.debug.xcconfig"; sourceTree = "<group>"; };
-		46EB2E00018A80 /* Pods-ChatTodoFront-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatTodoFront-frameworks.sh"; sourceTree = "<group>"; };
-		46EB2E00018A90 /* Pods-ChatTodoFront-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatTodoFront-resources.sh"; sourceTree = "<group>"; };
-		46EB2E00018AA0 /* Pods-ChatTodoFront-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChatTodoFront-acknowledgements.plist"; sourceTree = "<group>"; };
-		46EB2E00018AB0 /* Pods-ChatTodoFront-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ChatTodoFront-acknowledgements.markdown"; sourceTree = "<group>"; };
-		46EB2E00018AC0 /* Pods-ChatTodoFront-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ChatTodoFront-dummy.m"; sourceTree = "<group>"; };
-		46EB2E00018B70 /* Pods-ChatTodoFront-ChatTodoFrontTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatTodoFront-ChatTodoFrontTests.release.xcconfig"; sourceTree = "<group>"; };
-		46EB2E00018B80 /* Pods-ChatTodoFront-ChatTodoFrontTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatTodoFront-ChatTodoFrontTests.debug.xcconfig"; sourceTree = "<group>"; };
-		46EB2E00018B90 /* Pods-ChatTodoFront-ChatTodoFrontTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatTodoFront-ChatTodoFrontTests-frameworks.sh"; sourceTree = "<group>"; };
-		46EB2E00018BA0 /* Pods-ChatTodoFront-ChatTodoFrontTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatTodoFront-ChatTodoFrontTests-resources.sh"; sourceTree = "<group>"; };
-		46EB2E00018BB0 /* Pods-ChatTodoFront-ChatTodoFrontTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChatTodoFront-ChatTodoFrontTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		46EB2E00018BC0 /* Pods-ChatTodoFront-ChatTodoFrontTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ChatTodoFront-ChatTodoFrontTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		46EB2E00018BD0 /* Pods-ChatTodoFront-ChatTodoFrontTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ChatTodoFront-ChatTodoFrontTests-dummy.m"; sourceTree = "<group>"; };
+		46EB2E00018A60 /* Pods-chatTodoFront.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-chatTodoFront.release.xcconfig"; sourceTree = "<group>"; };
+		46EB2E00018A70 /* Pods-chatTodoFront.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-chatTodoFront.debug.xcconfig"; sourceTree = "<group>"; };
+		46EB2E00018A80 /* Pods-chatTodoFront-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-chatTodoFront-frameworks.sh"; sourceTree = "<group>"; };
+		46EB2E00018A90 /* Pods-chatTodoFront-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-chatTodoFront-resources.sh"; sourceTree = "<group>"; };
+		46EB2E00018AA0 /* Pods-chatTodoFront-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-chatTodoFront-acknowledgements.plist"; sourceTree = "<group>"; };
+		46EB2E00018AB0 /* Pods-chatTodoFront-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-chatTodoFront-acknowledgements.markdown"; sourceTree = "<group>"; };
+		46EB2E00018AC0 /* Pods-chatTodoFront-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-chatTodoFront-dummy.m"; sourceTree = "<group>"; };
+		46EB2E00018B70 /* Pods-chatTodoFront-chatTodoFrontTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-chatTodoFront-chatTodoFrontTests.release.xcconfig"; sourceTree = "<group>"; };
+		46EB2E00018B80 /* Pods-chatTodoFront-chatTodoFrontTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-chatTodoFront-chatTodoFrontTests.debug.xcconfig"; sourceTree = "<group>"; };
+		46EB2E00018B90 /* Pods-chatTodoFront-chatTodoFrontTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-chatTodoFront-chatTodoFrontTests-frameworks.sh"; sourceTree = "<group>"; };
+		46EB2E00018BA0 /* Pods-chatTodoFront-chatTodoFrontTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-chatTodoFront-chatTodoFrontTests-resources.sh"; sourceTree = "<group>"; };
+		46EB2E00018BB0 /* Pods-chatTodoFront-chatTodoFrontTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-chatTodoFront-chatTodoFrontTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		46EB2E00018BC0 /* Pods-chatTodoFront-chatTodoFrontTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-chatTodoFront-chatTodoFrontTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		46EB2E00018BD0 /* Pods-chatTodoFront-chatTodoFrontTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-chatTodoFront-chatTodoFrontTests-dummy.m"; sourceTree = "<group>"; };
 		4F3E9C98444FA55E416B857143C48013 /* React-RuntimeHermes */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RuntimeHermes"; path = "libReact-RuntimeHermes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AA54A19E2135E09B9C8C0767385FD3A /* React-graphics */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-graphics"; path = "libReact-graphics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D5A56E763D6E7C4FBE797565062EEA /* React-nativeconfig */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-nativeconfig"; path = "libReact-nativeconfig.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9910,7 +9909,6 @@
 		89E826D97CCB875AC8AC1FE400311A0F /* React-FabricComponents */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-FabricComponents"; path = "libReact-FabricComponents.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		971F6C319DDD4BD078954A5EF77B5BA7 /* React-featureflags */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-featureflags"; path = "libReact-featureflags.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B49761F8D1EB12585DD45CAA2E489F /* React-logger */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-logger"; path = "libReact-logger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5E6FE5529D0571DDF84418AD30FCC16 /* Pods-ChatTodoFront */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-ChatTodoFront"; path = "libPods-ChatTodoFront.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67E85E5F06FDA406D3A1B378BDF0C5C /* React-runtimescheduler */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-runtimescheduler"; path = "libReact-runtimescheduler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68E5A9B69A3BA0FD52CAF7A354EC93B /* React-RCTNetwork */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTNetwork"; path = "libReact-RCTNetwork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7610E9FDE749C16C0B1CDAAF3B2DDC2 /* React-utils */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-utils"; path = "libReact-utils.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9923,6 +9921,7 @@
 		CEA45A2349847B8CEAC9ABF565A04BD0 /* React-ImageManager */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-ImageManager"; path = "libReact-ImageManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22EED118A762A7D7BC88A4ADBB7026E /* React-RuntimeCore */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RuntimeCore"; path = "libReact-RuntimeCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C775614AC76D44CECB6BE08B022F1F /* ReactCommon */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = ReactCommon; path = libReactCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81896DEA70927D200C712FC530BEB52 /* Pods-chatTodoFront */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-chatTodoFront"; path = "libPods-chatTodoFront.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F334F2E90E3EE462FC4192AF5C03BD /* React-jsi */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-jsi"; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7ABB6DD8AEACED51D63B2C774E3A63 /* React-RCTFabric */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTFabric"; path = "libReact-RCTFabric.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD8B71DF2DFCF15AAF98C06D37D5703 /* React-hermes */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-hermes"; path = "libReact-hermes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -9937,6 +9936,7 @@
 		F4BDA69E3BCB0166D49FB679ABADCA00 /* fmt */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = fmt; path = libfmt.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71EBF73F354B475D465FF6DE9A66707 /* React-RCTBlob */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTBlob"; path = "libReact-RCTBlob.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F958876A082BF810B342435CE3FB5AF6 /* RCTTypeSafety */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RCTTypeSafety; path = libRCTTypeSafety.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD5E19CCC7FAAC24F74FD2DA26392D7F /* Pods-chatTodoFront-chatTodoFrontTests */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-chatTodoFront-chatTodoFrontTests"; path = "libPods-chatTodoFront-chatTodoFrontTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7B9294FF05AAFD1653E2104E10844A /* React-RCTAnimation */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTAnimation"; path = "libReact-RCTAnimation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDAD994FE728F76EC459CC05E0CCDFB /* glog-glog_privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "glog-glog_privacy"; path = glog_privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -10385,8 +10385,8 @@
 				F4BDA69E3BCB0166D49FB679ABADCA00 /* fmt */,
 				3CA7A9404CCDD6BA22C97F8348CE3209 /* glog */,
 				FFDAD994FE728F76EC459CC05E0CCDFB /* glog-glog_privacy */,
-				A5E6FE5529D0571DDF84418AD30FCC16 /* Pods-ChatTodoFront */,
-				00297960BCA5A5C180B1FDE256194EB5 /* Pods-ChatTodoFront-ChatTodoFrontTests */,
+				D81896DEA70927D200C712FC530BEB52 /* Pods-chatTodoFront */,
+				FD5E19CCC7FAAC24F74FD2DA26392D7F /* Pods-chatTodoFront-chatTodoFrontTests */,
 				1936453FF2A7E3A13063C4917C4D5598 /* RCT-Folly */,
 				BA6198501C8FE4824D863DC9EF32C614 /* RCT-Folly-RCT-Folly_privacy */,
 				33EEBF1D210254B5452CE560F81C9D38 /* RCTDeprecation */,
@@ -10454,8 +10454,8 @@
 		46EB2E00000070 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				46EB2E00018A50 /* Pods-ChatTodoFront */,
-				46EB2E00018B60 /* Pods-ChatTodoFront-ChatTodoFrontTests */,
+				46EB2E00018A50 /* Pods-chatTodoFront */,
+				46EB2E00018B60 /* Pods-chatTodoFront-chatTodoFrontTests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -16735,34 +16735,34 @@
 			path = "../Target Support Files/hermes-engine";
 			sourceTree = "<group>";
 		};
-		46EB2E00018A50 /* Pods-ChatTodoFront */ = {
+		46EB2E00018A50 /* Pods-chatTodoFront */ = {
 			isa = PBXGroup;
 			children = (
-				46EB2E00018AB0 /* Pods-ChatTodoFront-acknowledgements.markdown */,
-				46EB2E00018AA0 /* Pods-ChatTodoFront-acknowledgements.plist */,
-				46EB2E00018AC0 /* Pods-ChatTodoFront-dummy.m */,
-				46EB2E00018A80 /* Pods-ChatTodoFront-frameworks.sh */,
-				46EB2E00018A90 /* Pods-ChatTodoFront-resources.sh */,
-				46EB2E00018A70 /* Pods-ChatTodoFront.debug.xcconfig */,
-				46EB2E00018A60 /* Pods-ChatTodoFront.release.xcconfig */,
+				46EB2E00018AB0 /* Pods-chatTodoFront-acknowledgements.markdown */,
+				46EB2E00018AA0 /* Pods-chatTodoFront-acknowledgements.plist */,
+				46EB2E00018AC0 /* Pods-chatTodoFront-dummy.m */,
+				46EB2E00018A80 /* Pods-chatTodoFront-frameworks.sh */,
+				46EB2E00018A90 /* Pods-chatTodoFront-resources.sh */,
+				46EB2E00018A70 /* Pods-chatTodoFront.debug.xcconfig */,
+				46EB2E00018A60 /* Pods-chatTodoFront.release.xcconfig */,
 			);
-			name = "Pods-ChatTodoFront";
-			path = "Target Support Files/Pods-ChatTodoFront";
+			name = "Pods-chatTodoFront";
+			path = "Target Support Files/Pods-chatTodoFront";
 			sourceTree = "<group>";
 		};
-		46EB2E00018B60 /* Pods-ChatTodoFront-ChatTodoFrontTests */ = {
+		46EB2E00018B60 /* Pods-chatTodoFront-chatTodoFrontTests */ = {
 			isa = PBXGroup;
 			children = (
-				46EB2E00018BC0 /* Pods-ChatTodoFront-ChatTodoFrontTests-acknowledgements.markdown */,
-				46EB2E00018BB0 /* Pods-ChatTodoFront-ChatTodoFrontTests-acknowledgements.plist */,
-				46EB2E00018BD0 /* Pods-ChatTodoFront-ChatTodoFrontTests-dummy.m */,
-				46EB2E00018B90 /* Pods-ChatTodoFront-ChatTodoFrontTests-frameworks.sh */,
-				46EB2E00018BA0 /* Pods-ChatTodoFront-ChatTodoFrontTests-resources.sh */,
-				46EB2E00018B80 /* Pods-ChatTodoFront-ChatTodoFrontTests.debug.xcconfig */,
-				46EB2E00018B70 /* Pods-ChatTodoFront-ChatTodoFrontTests.release.xcconfig */,
+				46EB2E00018BC0 /* Pods-chatTodoFront-chatTodoFrontTests-acknowledgements.markdown */,
+				46EB2E00018BB0 /* Pods-chatTodoFront-chatTodoFrontTests-acknowledgements.plist */,
+				46EB2E00018BD0 /* Pods-chatTodoFront-chatTodoFrontTests-dummy.m */,
+				46EB2E00018B90 /* Pods-chatTodoFront-chatTodoFrontTests-frameworks.sh */,
+				46EB2E00018BA0 /* Pods-chatTodoFront-chatTodoFrontTests-resources.sh */,
+				46EB2E00018B80 /* Pods-chatTodoFront-chatTodoFrontTests.debug.xcconfig */,
+				46EB2E00018B70 /* Pods-chatTodoFront-chatTodoFrontTests.release.xcconfig */,
 			);
-			name = "Pods-ChatTodoFront-ChatTodoFrontTests";
-			path = "Target Support Files/Pods-ChatTodoFront-ChatTodoFrontTests";
+			name = "Pods-chatTodoFront-chatTodoFrontTests";
+			path = "Target Support Files/Pods-chatTodoFront-chatTodoFrontTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -19599,6 +19599,86 @@
 			productReference = D5C775614AC76D44CECB6BE08B022F1F /* ReactCommon */;
 			productType = "com.apple.product-type.library.static";
 		};
+		BF13ED5FAB58DE3C2F53E49E76714262 /* Pods-chatTodoFront */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46EB2E000189E0 /* Build configuration list for PBXNativeTarget "Pods-chatTodoFront" */;
+			buildPhases = (
+				46EB2E00018A20 /* Headers */,
+				46EB2E00018A30 /* Sources */,
+				46EB2E00018A40 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46EB2E00018C50 /* PBXTargetDependency */,
+				46EB2E00018C70 /* PBXTargetDependency */,
+				46EB2E00018C90 /* PBXTargetDependency */,
+				46EB2E00018CB0 /* PBXTargetDependency */,
+				46EB2E00018CD0 /* PBXTargetDependency */,
+				46EB2E00018CF0 /* PBXTargetDependency */,
+				46EB2E00018D10 /* PBXTargetDependency */,
+				46EB2E00018D30 /* PBXTargetDependency */,
+				46EB2E00018D50 /* PBXTargetDependency */,
+				46EB2E00018D70 /* PBXTargetDependency */,
+				46EB2E00018D90 /* PBXTargetDependency */,
+				46EB2E00018DB0 /* PBXTargetDependency */,
+				46EB2E00018DD0 /* PBXTargetDependency */,
+				46EB2E00018DF0 /* PBXTargetDependency */,
+				46EB2E00018E10 /* PBXTargetDependency */,
+				46EB2E00018E30 /* PBXTargetDependency */,
+				46EB2E00018E50 /* PBXTargetDependency */,
+				46EB2E00018E70 /* PBXTargetDependency */,
+				46EB2E00018E90 /* PBXTargetDependency */,
+				46EB2E00018EB0 /* PBXTargetDependency */,
+				46EB2E00018ED0 /* PBXTargetDependency */,
+				46EB2E00018EF0 /* PBXTargetDependency */,
+				46EB2E00018F10 /* PBXTargetDependency */,
+				46EB2E00018F30 /* PBXTargetDependency */,
+				46EB2E00018F50 /* PBXTargetDependency */,
+				46EB2E00018F70 /* PBXTargetDependency */,
+				46EB2E00018F90 /* PBXTargetDependency */,
+				46EB2E00018FB0 /* PBXTargetDependency */,
+				46EB2E00018FD0 /* PBXTargetDependency */,
+				46EB2E00018FF0 /* PBXTargetDependency */,
+				46EB2E00019010 /* PBXTargetDependency */,
+				46EB2E00019030 /* PBXTargetDependency */,
+				46EB2E00019050 /* PBXTargetDependency */,
+				46EB2E00019070 /* PBXTargetDependency */,
+				46EB2E00019090 /* PBXTargetDependency */,
+				46EB2E000190B0 /* PBXTargetDependency */,
+				46EB2E000190D0 /* PBXTargetDependency */,
+				46EB2E000190F0 /* PBXTargetDependency */,
+				46EB2E00019110 /* PBXTargetDependency */,
+				46EB2E00019130 /* PBXTargetDependency */,
+				46EB2E00019150 /* PBXTargetDependency */,
+				46EB2E00019170 /* PBXTargetDependency */,
+				46EB2E00019190 /* PBXTargetDependency */,
+				46EB2E000191B0 /* PBXTargetDependency */,
+				46EB2E000191D0 /* PBXTargetDependency */,
+				46EB2E000191F0 /* PBXTargetDependency */,
+				46EB2E00019210 /* PBXTargetDependency */,
+				46EB2E00019230 /* PBXTargetDependency */,
+				46EB2E00019250 /* PBXTargetDependency */,
+				46EB2E00019270 /* PBXTargetDependency */,
+				46EB2E00019290 /* PBXTargetDependency */,
+				46EB2E000192B0 /* PBXTargetDependency */,
+				46EB2E000192D0 /* PBXTargetDependency */,
+				46EB2E000192F0 /* PBXTargetDependency */,
+				46EB2E00019310 /* PBXTargetDependency */,
+				46EB2E00019330 /* PBXTargetDependency */,
+				46EB2E00019350 /* PBXTargetDependency */,
+				46EB2E00019370 /* PBXTargetDependency */,
+				46EB2E00019390 /* PBXTargetDependency */,
+				46EB2E000193B0 /* PBXTargetDependency */,
+				46EB2E000193D0 /* PBXTargetDependency */,
+				46EB2E000193F0 /* PBXTargetDependency */,
+				46EB2E00019410 /* PBXTargetDependency */,
+			);
+			name = "Pods-chatTodoFront";
+			productName = "Pods-chatTodoFront";
+			productReference = D81896DEA70927D200C712FC530BEB52 /* Pods-chatTodoFront */;
+			productType = "com.apple.product-type.library.static";
+		};
 		C2B1B75CCC326124F29FE703CC59BFB7 /* React-RCTAppDelegate */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46EB2E00013870 /* Build configuration list for PBXNativeTarget "React-RCTAppDelegate" */;
@@ -19707,86 +19787,6 @@
 			productReference = F958876A082BF810B342435CE3FB5AF6 /* RCTTypeSafety */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D5E8F5EA38356AA7C18CC41A2955222F /* Pods-ChatTodoFront-ChatTodoFrontTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 46EB2E00018AF0 /* Build configuration list for PBXNativeTarget "Pods-ChatTodoFront-ChatTodoFrontTests" */;
-			buildPhases = (
-				46EB2E00018B30 /* Headers */,
-				46EB2E00018B40 /* Sources */,
-				46EB2E00018B50 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				46EB2E00019430 /* PBXTargetDependency */,
-				46EB2E00019450 /* PBXTargetDependency */,
-				46EB2E00019470 /* PBXTargetDependency */,
-				46EB2E00019490 /* PBXTargetDependency */,
-				46EB2E000194B0 /* PBXTargetDependency */,
-				46EB2E000194D0 /* PBXTargetDependency */,
-				46EB2E000194F0 /* PBXTargetDependency */,
-				46EB2E00019510 /* PBXTargetDependency */,
-				46EB2E00019530 /* PBXTargetDependency */,
-				46EB2E00019550 /* PBXTargetDependency */,
-				46EB2E00019570 /* PBXTargetDependency */,
-				46EB2E00019590 /* PBXTargetDependency */,
-				46EB2E000195B0 /* PBXTargetDependency */,
-				46EB2E000195D0 /* PBXTargetDependency */,
-				46EB2E000195F0 /* PBXTargetDependency */,
-				46EB2E00019610 /* PBXTargetDependency */,
-				46EB2E00019630 /* PBXTargetDependency */,
-				46EB2E00019650 /* PBXTargetDependency */,
-				46EB2E00019670 /* PBXTargetDependency */,
-				46EB2E00019690 /* PBXTargetDependency */,
-				46EB2E000196B0 /* PBXTargetDependency */,
-				46EB2E000196D0 /* PBXTargetDependency */,
-				46EB2E000196F0 /* PBXTargetDependency */,
-				46EB2E00019710 /* PBXTargetDependency */,
-				46EB2E00019730 /* PBXTargetDependency */,
-				46EB2E00019750 /* PBXTargetDependency */,
-				46EB2E00019770 /* PBXTargetDependency */,
-				46EB2E00019790 /* PBXTargetDependency */,
-				46EB2E000197B0 /* PBXTargetDependency */,
-				46EB2E000197D0 /* PBXTargetDependency */,
-				46EB2E000197F0 /* PBXTargetDependency */,
-				46EB2E00019810 /* PBXTargetDependency */,
-				46EB2E00019830 /* PBXTargetDependency */,
-				46EB2E00019850 /* PBXTargetDependency */,
-				46EB2E00019870 /* PBXTargetDependency */,
-				46EB2E00019890 /* PBXTargetDependency */,
-				46EB2E000198B0 /* PBXTargetDependency */,
-				46EB2E000198D0 /* PBXTargetDependency */,
-				46EB2E000198F0 /* PBXTargetDependency */,
-				46EB2E00019910 /* PBXTargetDependency */,
-				46EB2E00019930 /* PBXTargetDependency */,
-				46EB2E00019950 /* PBXTargetDependency */,
-				46EB2E00019970 /* PBXTargetDependency */,
-				46EB2E00019990 /* PBXTargetDependency */,
-				46EB2E000199B0 /* PBXTargetDependency */,
-				46EB2E000199D0 /* PBXTargetDependency */,
-				46EB2E000199F0 /* PBXTargetDependency */,
-				46EB2E00019A10 /* PBXTargetDependency */,
-				46EB2E00019A30 /* PBXTargetDependency */,
-				46EB2E00019A50 /* PBXTargetDependency */,
-				46EB2E00019A70 /* PBXTargetDependency */,
-				46EB2E00019A90 /* PBXTargetDependency */,
-				46EB2E00019AB0 /* PBXTargetDependency */,
-				46EB2E00019AD0 /* PBXTargetDependency */,
-				46EB2E00019AF0 /* PBXTargetDependency */,
-				46EB2E00019B10 /* PBXTargetDependency */,
-				46EB2E00019B30 /* PBXTargetDependency */,
-				46EB2E00019B50 /* PBXTargetDependency */,
-				46EB2E00019B70 /* PBXTargetDependency */,
-				46EB2E00019B90 /* PBXTargetDependency */,
-				46EB2E00019BB0 /* PBXTargetDependency */,
-				46EB2E00019BD0 /* PBXTargetDependency */,
-				46EB2E00019BF0 /* PBXTargetDependency */,
-			);
-			name = "Pods-ChatTodoFront-ChatTodoFrontTests";
-			productName = "Pods-ChatTodoFront-ChatTodoFrontTests";
-			productReference = 00297960BCA5A5C180B1FDE256194EB5 /* Pods-ChatTodoFront-ChatTodoFrontTests */;
-			productType = "com.apple.product-type.library.static";
-		};
 		DA0709CAAD589C6E7963495210438021 /* React-jsiexecutor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46EB2E00016450 /* Build configuration list for PBXNativeTarget "React-jsiexecutor" */;
@@ -19849,86 +19849,6 @@
 			name = "React-RCTText";
 			productName = "React-RCTText";
 			productReference = E6A16705C69FC7DE11C2469A4A0F8358 /* React-RCTText */;
-			productType = "com.apple.product-type.library.static";
-		};
-		E156C2E48E59C1658E4BC3EA8C767DD6 /* Pods-ChatTodoFront */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 46EB2E000189E0 /* Build configuration list for PBXNativeTarget "Pods-ChatTodoFront" */;
-			buildPhases = (
-				46EB2E00018A20 /* Headers */,
-				46EB2E00018A30 /* Sources */,
-				46EB2E00018A40 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				46EB2E00018C50 /* PBXTargetDependency */,
-				46EB2E00018C70 /* PBXTargetDependency */,
-				46EB2E00018C90 /* PBXTargetDependency */,
-				46EB2E00018CB0 /* PBXTargetDependency */,
-				46EB2E00018CD0 /* PBXTargetDependency */,
-				46EB2E00018CF0 /* PBXTargetDependency */,
-				46EB2E00018D10 /* PBXTargetDependency */,
-				46EB2E00018D30 /* PBXTargetDependency */,
-				46EB2E00018D50 /* PBXTargetDependency */,
-				46EB2E00018D70 /* PBXTargetDependency */,
-				46EB2E00018D90 /* PBXTargetDependency */,
-				46EB2E00018DB0 /* PBXTargetDependency */,
-				46EB2E00018DD0 /* PBXTargetDependency */,
-				46EB2E00018DF0 /* PBXTargetDependency */,
-				46EB2E00018E10 /* PBXTargetDependency */,
-				46EB2E00018E30 /* PBXTargetDependency */,
-				46EB2E00018E50 /* PBXTargetDependency */,
-				46EB2E00018E70 /* PBXTargetDependency */,
-				46EB2E00018E90 /* PBXTargetDependency */,
-				46EB2E00018EB0 /* PBXTargetDependency */,
-				46EB2E00018ED0 /* PBXTargetDependency */,
-				46EB2E00018EF0 /* PBXTargetDependency */,
-				46EB2E00018F10 /* PBXTargetDependency */,
-				46EB2E00018F30 /* PBXTargetDependency */,
-				46EB2E00018F50 /* PBXTargetDependency */,
-				46EB2E00018F70 /* PBXTargetDependency */,
-				46EB2E00018F90 /* PBXTargetDependency */,
-				46EB2E00018FB0 /* PBXTargetDependency */,
-				46EB2E00018FD0 /* PBXTargetDependency */,
-				46EB2E00018FF0 /* PBXTargetDependency */,
-				46EB2E00019010 /* PBXTargetDependency */,
-				46EB2E00019030 /* PBXTargetDependency */,
-				46EB2E00019050 /* PBXTargetDependency */,
-				46EB2E00019070 /* PBXTargetDependency */,
-				46EB2E00019090 /* PBXTargetDependency */,
-				46EB2E000190B0 /* PBXTargetDependency */,
-				46EB2E000190D0 /* PBXTargetDependency */,
-				46EB2E000190F0 /* PBXTargetDependency */,
-				46EB2E00019110 /* PBXTargetDependency */,
-				46EB2E00019130 /* PBXTargetDependency */,
-				46EB2E00019150 /* PBXTargetDependency */,
-				46EB2E00019170 /* PBXTargetDependency */,
-				46EB2E00019190 /* PBXTargetDependency */,
-				46EB2E000191B0 /* PBXTargetDependency */,
-				46EB2E000191D0 /* PBXTargetDependency */,
-				46EB2E000191F0 /* PBXTargetDependency */,
-				46EB2E00019210 /* PBXTargetDependency */,
-				46EB2E00019230 /* PBXTargetDependency */,
-				46EB2E00019250 /* PBXTargetDependency */,
-				46EB2E00019270 /* PBXTargetDependency */,
-				46EB2E00019290 /* PBXTargetDependency */,
-				46EB2E000192B0 /* PBXTargetDependency */,
-				46EB2E000192D0 /* PBXTargetDependency */,
-				46EB2E000192F0 /* PBXTargetDependency */,
-				46EB2E00019310 /* PBXTargetDependency */,
-				46EB2E00019330 /* PBXTargetDependency */,
-				46EB2E00019350 /* PBXTargetDependency */,
-				46EB2E00019370 /* PBXTargetDependency */,
-				46EB2E00019390 /* PBXTargetDependency */,
-				46EB2E000193B0 /* PBXTargetDependency */,
-				46EB2E000193D0 /* PBXTargetDependency */,
-				46EB2E000193F0 /* PBXTargetDependency */,
-				46EB2E00019410 /* PBXTargetDependency */,
-			);
-			name = "Pods-ChatTodoFront";
-			productName = "Pods-ChatTodoFront";
-			productReference = A5E6FE5529D0571DDF84418AD30FCC16 /* Pods-ChatTodoFront */;
 			productType = "com.apple.product-type.library.static";
 		};
 		E16E206437995280D349D4B67695C894 /* React-CoreModules */ = {
@@ -20024,6 +19944,86 @@
 			productReference = 2577F299FCB0A19824FE989BE77B8E8F /* React-jsinspector */;
 			productType = "com.apple.product-type.library.static";
 		};
+		F8D3A3D836DE9C3539899E74AF15E7C1 /* Pods-chatTodoFront-chatTodoFrontTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46EB2E00018AF0 /* Build configuration list for PBXNativeTarget "Pods-chatTodoFront-chatTodoFrontTests" */;
+			buildPhases = (
+				46EB2E00018B30 /* Headers */,
+				46EB2E00018B40 /* Sources */,
+				46EB2E00018B50 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46EB2E00019430 /* PBXTargetDependency */,
+				46EB2E00019450 /* PBXTargetDependency */,
+				46EB2E00019470 /* PBXTargetDependency */,
+				46EB2E00019490 /* PBXTargetDependency */,
+				46EB2E000194B0 /* PBXTargetDependency */,
+				46EB2E000194D0 /* PBXTargetDependency */,
+				46EB2E000194F0 /* PBXTargetDependency */,
+				46EB2E00019510 /* PBXTargetDependency */,
+				46EB2E00019530 /* PBXTargetDependency */,
+				46EB2E00019550 /* PBXTargetDependency */,
+				46EB2E00019570 /* PBXTargetDependency */,
+				46EB2E00019590 /* PBXTargetDependency */,
+				46EB2E000195B0 /* PBXTargetDependency */,
+				46EB2E000195D0 /* PBXTargetDependency */,
+				46EB2E000195F0 /* PBXTargetDependency */,
+				46EB2E00019610 /* PBXTargetDependency */,
+				46EB2E00019630 /* PBXTargetDependency */,
+				46EB2E00019650 /* PBXTargetDependency */,
+				46EB2E00019670 /* PBXTargetDependency */,
+				46EB2E00019690 /* PBXTargetDependency */,
+				46EB2E000196B0 /* PBXTargetDependency */,
+				46EB2E000196D0 /* PBXTargetDependency */,
+				46EB2E000196F0 /* PBXTargetDependency */,
+				46EB2E00019710 /* PBXTargetDependency */,
+				46EB2E00019730 /* PBXTargetDependency */,
+				46EB2E00019750 /* PBXTargetDependency */,
+				46EB2E00019770 /* PBXTargetDependency */,
+				46EB2E00019790 /* PBXTargetDependency */,
+				46EB2E000197B0 /* PBXTargetDependency */,
+				46EB2E000197D0 /* PBXTargetDependency */,
+				46EB2E000197F0 /* PBXTargetDependency */,
+				46EB2E00019810 /* PBXTargetDependency */,
+				46EB2E00019830 /* PBXTargetDependency */,
+				46EB2E00019850 /* PBXTargetDependency */,
+				46EB2E00019870 /* PBXTargetDependency */,
+				46EB2E00019890 /* PBXTargetDependency */,
+				46EB2E000198B0 /* PBXTargetDependency */,
+				46EB2E000198D0 /* PBXTargetDependency */,
+				46EB2E000198F0 /* PBXTargetDependency */,
+				46EB2E00019910 /* PBXTargetDependency */,
+				46EB2E00019930 /* PBXTargetDependency */,
+				46EB2E00019950 /* PBXTargetDependency */,
+				46EB2E00019970 /* PBXTargetDependency */,
+				46EB2E00019990 /* PBXTargetDependency */,
+				46EB2E000199B0 /* PBXTargetDependency */,
+				46EB2E000199D0 /* PBXTargetDependency */,
+				46EB2E000199F0 /* PBXTargetDependency */,
+				46EB2E00019A10 /* PBXTargetDependency */,
+				46EB2E00019A30 /* PBXTargetDependency */,
+				46EB2E00019A50 /* PBXTargetDependency */,
+				46EB2E00019A70 /* PBXTargetDependency */,
+				46EB2E00019A90 /* PBXTargetDependency */,
+				46EB2E00019AB0 /* PBXTargetDependency */,
+				46EB2E00019AD0 /* PBXTargetDependency */,
+				46EB2E00019AF0 /* PBXTargetDependency */,
+				46EB2E00019B10 /* PBXTargetDependency */,
+				46EB2E00019B30 /* PBXTargetDependency */,
+				46EB2E00019B50 /* PBXTargetDependency */,
+				46EB2E00019B70 /* PBXTargetDependency */,
+				46EB2E00019B90 /* PBXTargetDependency */,
+				46EB2E00019BB0 /* PBXTargetDependency */,
+				46EB2E00019BD0 /* PBXTargetDependency */,
+				46EB2E00019BF0 /* PBXTargetDependency */,
+			);
+			name = "Pods-chatTodoFront-chatTodoFrontTests";
+			productName = "Pods-chatTodoFront-chatTodoFrontTests";
+			productReference = FD5E19CCC7FAAC24F74FD2DA26392D7F /* Pods-chatTodoFront-chatTodoFrontTests */;
+			productType = "com.apple.product-type.library.static";
+		};
 		FA877ADC442CB19CF61793D234C8B131 /* React-jsi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46EB2E000162C0 /* Build configuration list for PBXNativeTarget "React-jsi" */;
@@ -20078,8 +20078,8 @@
 				D0EFEFB685D97280256C559792236873 /* glog */,
 				9E6B7857CC223C0629E4C37E6386FC96 /* glog-glog_privacy */,
 				985FEA01F314F3C00F0C1E1181E6C4A5 /* hermes-engine */,
-				E156C2E48E59C1658E4BC3EA8C767DD6 /* Pods-ChatTodoFront */,
-				D5E8F5EA38356AA7C18CC41A2955222F /* Pods-ChatTodoFront-ChatTodoFrontTests */,
+				BF13ED5FAB58DE3C2F53E49E76714262 /* Pods-chatTodoFront */,
+				F8D3A3D836DE9C3539899E74AF15E7C1 /* Pods-chatTodoFront-chatTodoFrontTests */,
 				EC55D52694092A9D0E6A78EB01207EB5 /* RCT-Folly */,
 				331AFAADB024F73370A9DC6FBD7A5A22 /* RCT-Folly-RCT-Folly_privacy */,
 				5211B5AB7B81060AA8E78614DD75D3AB /* RCTDeprecation */,
@@ -21326,7 +21326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46EB2E00018AD0 /* Pods-ChatTodoFront-dummy.m in Sources */,
+				46EB2E00018AD0 /* Pods-chatTodoFront-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -21334,7 +21334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46EB2E00018BE0 /* Pods-ChatTodoFront-ChatTodoFrontTests-dummy.m in Sources */,
+				46EB2E00018BE0 /* Pods-chatTodoFront-chatTodoFrontTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -28873,7 +28873,7 @@
 		};
 		46EB2E000189F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46EB2E00018A60 /* Pods-ChatTodoFront.release.xcconfig */;
+			baseConfigurationReference = 46EB2E00018A60 /* Pods-chatTodoFront.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -28895,7 +28895,7 @@
 		};
 		46EB2E00018A00 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46EB2E00018A70 /* Pods-ChatTodoFront.debug.xcconfig */;
+			baseConfigurationReference = 46EB2E00018A70 /* Pods-chatTodoFront.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -28916,7 +28916,7 @@
 		};
 		46EB2E00018B00 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46EB2E00018B70 /* Pods-ChatTodoFront-ChatTodoFrontTests.release.xcconfig */;
+			baseConfigurationReference = 46EB2E00018B70 /* Pods-chatTodoFront-chatTodoFrontTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -28938,7 +28938,7 @@
 		};
 		46EB2E00018B10 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46EB2E00018B80 /* Pods-ChatTodoFront-ChatTodoFrontTests.debug.xcconfig */;
+			baseConfigurationReference = 46EB2E00018B80 /* Pods-chatTodoFront-chatTodoFrontTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -29581,7 +29581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46EB2E000189E0 /* Build configuration list for PBXNativeTarget "Pods-ChatTodoFront" */ = {
+		46EB2E000189E0 /* Build configuration list for PBXNativeTarget "Pods-chatTodoFront" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46EB2E00018A00 /* Debug */,
@@ -29590,7 +29590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46EB2E00018AF0 /* Build configuration list for PBXNativeTarget "Pods-ChatTodoFront-ChatTodoFrontTests" */ = {
+		46EB2E00018AF0 /* Build configuration list for PBXNativeTarget "Pods-chatTodoFront-chatTodoFrontTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46EB2E00018B10 /* Debug */,

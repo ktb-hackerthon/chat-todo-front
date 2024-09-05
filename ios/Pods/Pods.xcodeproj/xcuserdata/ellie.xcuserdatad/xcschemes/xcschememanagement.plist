@@ -14,12 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ChatTodoFront-ChatTodoFrontTests.xcscheme</key>
+		<key>Pods-chatTodoFront-chatTodoFrontTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ChatTodoFront.xcscheme</key>
+		<key>Pods-chatTodoFront.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

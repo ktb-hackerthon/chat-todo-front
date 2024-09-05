@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E156C2E48E59C1658E4BC3EA8C767DD6"
-               BuildableName = "libPods-ChatTodoFront.a"
-               BlueprintName = "Pods-ChatTodoFront"
+               BlueprintIdentifier = "BF13ED5FAB58DE3C2F53E49E76714262"
+               BuildableName = "libPods-chatTodoFront.a"
+               BlueprintName = "Pods-chatTodoFront"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
