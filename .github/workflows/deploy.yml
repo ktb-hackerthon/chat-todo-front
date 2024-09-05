@@ -1,0 +1,37 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main  # main, dev 브랜치에 푸시될 때마다 실행
+      - dev   
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'  # Node.js 버전
+
+    - name: Install dependencies
+      run: |
+        npm install
+
+    - name: Build React Native project
+      run: |
+        npm run build  # 프로젝트에 맞게 수정
+
+    - name: Sync files to S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+      run: |
+        aws s3 sync ./build s3://chat-todo --delete --acl public-read
+
