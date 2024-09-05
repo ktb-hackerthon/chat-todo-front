@@ -3,8 +3,8 @@ name: Deploy to S3
 on:
   push:
     branches:
-      - main  # main, dev 브랜치에 푸시될 때마다 실행
-      - dev   
+      - main  # main, feature-ci-cd 브랜치에 푸시될 때마다 실행
+      - feature-ci-cd
 
 jobs:
   deploy:
