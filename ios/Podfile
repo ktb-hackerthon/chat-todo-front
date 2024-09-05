@@ -37,4 +37,6 @@ target 'chatTodoFront' do
       # :ccache_enabled => true
     )
   end
+
+  pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
 end

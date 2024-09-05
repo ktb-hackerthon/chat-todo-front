@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
-
-// 임시로 사용하는 Icon 컴포넌트
-const Icon = styled.Text`
-  font-size: 18px;
-  color: #333;
-`;
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 
 const Header = ({ children, style, onMenuPress, onChatPress, onNotificationPress, currentScreen }) => {
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        onDateChange(moment(date).format('YYYY-MM-DD'));
+        hideDatePicker();
+    };
+
     return (
         <HeaderContainer>
-            <IconButton onPress={onMenuPress}>
-                <Icon>≡</Icon>
-            </IconButton>
             <HeaderText style={style}>{children}</HeaderText>
             <ButtonContainer>
                 <IconButton onPress={onNotificationPress}>
@@ -22,6 +30,12 @@ const Header = ({ children, style, onMenuPress, onChatPress, onNotificationPress
                     <Icon>{currentScreen === 'Calendar' ? '💬' : '📅'}</Icon>
                 </IconButton>
             </ButtonContainer>
+            <DateTimePickerModal
+                isVisible={isDatePickerVisible}
+                mode="date"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+            />
         </HeaderContainer>
     );
 };
@@ -34,6 +48,7 @@ const HeaderContainer = styled.View`
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    padding: 5px;
 `;
 
 const HeaderText = styled.Text`
@@ -54,4 +69,9 @@ const IconButton = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     margin-left: 10px;
+`;
+
+const Icon = styled.Text`
+  font-size: 18px;
+  color: #333;
 `;

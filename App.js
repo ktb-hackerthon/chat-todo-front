@@ -29,9 +29,11 @@ export default App;
 
 const SafeAreaView = styled.SafeAreaView`
     flex: 1;
+    background-color: white;
+    
 `;
 
 const Container = styled.View`
     flex: 1;
-    padding: 10px;
+    padding: 10px 0 0 0;
 `;

@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
 
-const { height } = Dimensions.get('window');
 
 const Chatting = () => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
+    const scrollViewRef = useRef();
 
     const handleSend = () => {
         if (inputText.trim()) {
-            setMessages([...messages, { id: Date.now().toString(), text: inputText }]);
+            setMessages([...messages, { id: Date.now().toString(), text: inputText, sentByMe: true }]);
             setInputText('');
         }
     };
@@ -18,10 +17,13 @@ const Chatting = () => {
     return (
         <SafeAreaView>
             <Container>
-                <MessagesContainer>
+                <MessagesContainer
+                    ref={scrollViewRef}
+                    onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
+                >
                     {messages.map((message) => (
-                        <MessageBubble key={message.id}>
-                            <MessageText>{message.text}</MessageText>
+                        <MessageBubble key={message.id} sentByMe={message.sentByMe}>
+                            <MessageText sentByMe={message.sentByMe}>{message.text}</MessageText>
                         </MessageBubble>
                     ))}
                 </MessagesContainer>
@@ -32,7 +34,7 @@ const Chatting = () => {
                         placeholder="Type a message..."
                     />
                     <SendButton onPress={handleSend}>
-                        <SendButtonText>Send</SendButtonText>
+                        <ArrowImage source={require('../assets/arrow.png')} />
                     </SendButton>
                 </InputBar>
             </Container>
@@ -45,7 +47,7 @@ export default Chatting;
 // Styled Components
 const SafeAreaView = styled.SafeAreaView`
     flex: 1;
-    height: ${height}px;
+    background-color: #9bbbd4;
 `;
 
 const Container = styled.View`
@@ -60,11 +62,12 @@ const MessagesContainer = styled.ScrollView`
 `;
 
 const MessageBubble = styled.View`
-    background-color: #f0f0f0;
+    background-color: ${({sentByMe}) => (sentByMe ? '#fae100' : '#fff')}; /* 내가 보낸 메시지는 노란색, 상대방 메시지는 흰색 */
     padding: 10px;
     border-radius: 20px;
     margin-bottom: 5px;
-    align-self: flex-start;
+    align-self: ${({sentByMe}) => (sentByMe ? 'flex-end' : 'flex-start')}; /* 내가 보낸 메시지는 오른쪽, 상대방 메시지는 왼쪽 */
+    max-width: 70%; /* 메시지 버블의 최대 너비를 설정하여 화면 폭에 맞게 조절 */
 `;
 
 const MessageText = styled.Text`
@@ -76,7 +79,6 @@ const InputBar = styled.View`
     flex-direction: row;
     align-items: center;
     padding: 10px;
-    border-top-width: 1px;
     border-top-color: #ccc;
 `;
 
@@ -88,15 +90,16 @@ const TextInput = styled.TextInput`
     border-radius: 20px;
     padding: 10px;
     margin-right: 10px;
+    background-color: white;
 `;
 
 const SendButton = styled.TouchableOpacity`
-    background-color: #007bff;
-    padding: 10px 15px;
+    background-color: ${({ isPressed }) => (isPressed ? '#fff' : '#f4e71d')};
+    padding: 10px;
     border-radius: 20px;
 `;
 
-const SendButtonText = styled.Text`
-    color: #fff;
-    font-size: 16px;
+const ArrowImage = styled.Image`
+    width: 20px;
+    height: 20px;
 `;
