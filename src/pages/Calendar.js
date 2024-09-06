@@ -41,9 +41,10 @@ const Calendar = () => {
             }
 
             // 백엔드로 요청 보내기
-            const response = await axios.get('http://localhost:8080/schedules', {
+            const response = await axios.get('http://43.203.202.150/schedules/', {
                 headers: {
                     member_id: userId,
+                    'Content-Type': 'application/json',
                 },
                 params: {
                     start_date: startDate,
@@ -60,7 +61,7 @@ const Calendar = () => {
                 if (count > 1) {
                     newMarkedDates[date] = {
                         marked: true,
-                        dotColor: 'lightblue', // 일정이 있는 날 연한색 동그라미
+                        dotColor: '#fff6ac', // 일정이 있는 날 연한색 동그라미
                     };
                 }
             });
@@ -79,7 +80,7 @@ const Calendar = () => {
         try {
             const userId = await AsyncStorage.getItem('userId');
 
-            const response = await axios.get('http://localhost:8080/schedules', {
+            const response = await axios.get('http://43.203.202.150/schedules/search/', {
                 headers: { member_id: userId },
                 params: { start_date: date, end_date: date },  // 선택한 날짜의 일정 가져오기
             });
@@ -140,9 +141,9 @@ const Calendar = () => {
         setTimeout(() => setDatePickerVisibility(false), 300); // 애니메이션이 끝난 후 상태 업데이트
     };
 
-    if (loading) {
-        return <ActivityIndicator size="large" color="#0000ff" />;
-    }
+    // if (loading) {
+    //     return <ActivityIndicator size="large" color="#0000ff" />;
+    // }
 
     return (
         <SafeAreaView>
@@ -190,7 +191,7 @@ const Calendar = () => {
                             transform: [{
                                 translateY: slideAnim.interpolate({
                                     inputRange: [0, 1],
-                                    outputRange: [300, 0]
+                                    outputRange: [300, 0],
                                 }),
                             }],
                         }}
@@ -283,7 +284,7 @@ const ViewDetail = styled.View`
     right: 0;
     bottom: 0;
     height: 50%;
-    background-color: #fae100;
+    background-color: #FFCD00;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     padding: 20px 20px 0 20px;
@@ -300,7 +301,7 @@ const AnimatedPopupView = styled(Animated.View)`
     right: 0;
     bottom: 0;
     height: 50%;
-    background-color: white;
+    background-color: #FFCD00;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     padding: 20px 20px 0 20px;
@@ -346,7 +347,7 @@ const StyledDropDownPicker = styled(DropDownPicker).attrs(props => ({
 }))``;
 
 const DatePickerButton = styled.TouchableOpacity`
-    background-color: #333;
+    background-color: #3C1E1E;
     padding: 10px;
     border-radius: 5px;
     margin-top: 20px;

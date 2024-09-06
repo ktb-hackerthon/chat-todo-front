@@ -6,11 +6,13 @@
       <option name="myIgnoreVendorSpecificProperties" value="false" />
       <option name="myCustomPropertiesList">
         <value>
-          <list size="4">
+          <list size="6">
             <item index="0" class="java.lang.String" itemvalue="shadow-radius" />
             <item index="1" class="java.lang.String" itemvalue="shadow-color" />
             <item index="2" class="java.lang.String" itemvalue="shadow-opacity" />
             <item index="3" class="java.lang.String" itemvalue="shadow-offset" />
+            <item index="4" class="java.lang.String" itemvalue="shadow-offset-width" />
+            <item index="5" class="java.lang.String" itemvalue="shadow-offset-height" />
           </list>
         </value>
       </option>

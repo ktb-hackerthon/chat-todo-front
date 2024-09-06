@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 
 
 const Chatting = () => {
@@ -9,39 +10,93 @@ const Chatting = () => {
     const [inputText, setInputText] = useState('');
     const scrollViewRef = useRef();
 
+    // 로컬스토리지에서 메시지 불러오기
+    useEffect(() => {
+        const loadMessages = async () => {
+            try {
+                const storedMessages = await AsyncStorage.getItem('chatMessages');
+                if (storedMessages) {
+                    setMessages(JSON.parse(storedMessages));
+                }
+            } catch (error) {
+                console.error('Error loading messages:', error);
+            }
+        };
+
+        loadMessages();
+    }, []);
+
+    // 메시지를 로컬 스토리지에 저장
+    const saveMessages = async (newMessages) => {
+        try {
+            await AsyncStorage.setItem('chatMessages', JSON.stringify(newMessages));
+        } catch (error) {
+            console.error('Error saving messages:', error);
+        }
+    };
+
     const handleSend = async () => {
         if (inputText.trim()) {
             const newMessage = { id: Date.now().toString(), text: inputText, sentByMe: true };
-            setMessages([...messages, newMessage]);
+            const updatedMessages = [...messages, newMessage];
+
+            if (updatedMessages.length > 50) {
+                updatedMessages.shift(); // 오래된 메시지 삭제
+            }
+
+            setMessages(updatedMessages);
+            saveMessages(updatedMessages);
             setInputText('');
 
             try {
                 const userId = await AsyncStorage.getItem('userId');
 
                 // AI request
-                const response = await axios.post('https://api.example.com/chat',
+                const response = await axios.post('http://43.203.202.150/chat/',
                     {
-                        message: inputText,
+                        user_input: inputText,
                     },
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `${userId}`,
+                            member_id: `${userId}`,
                         },
-                    });
+                    }
+                );
 
                 // response success
-                const aiMessage = { id: Date.now().toString(), text: response.data.message, sentByMe: false };
-                setMessages((prevMessages) => [...prevMessages, aiMessage]);
+                const aiMessage = { id: Date.now().toString(), text: response.data.response, sentByMe: false };
+                const updatedMessagesWithAI = [...updatedMessages, aiMessage];
+
+                // 최대 50개
+                if (updatedMessagesWithAI.length > 50) {
+                    updatedMessagesWithAI.shift();
+                }
+
+                setMessages(updatedMessagesWithAI);
+                saveMessages(updatedMessagesWithAI);
             } catch (error) {
                 const errorMessage = { id: Date.now().toString(), text: 'Error: ' + error.message, sentByMe: false };
-                setMessages((prevMessages) => [...prevMessages, errorMessage]);
+                const updatedMessagesWithError = [...updatedMessages, errorMessage];
+
+                // 최대 50개
+                if (updatedMessagesWithError.length > 50) {
+                    updatedMessagesWithError.shift();
+                }
+
+                setMessages(updatedMessagesWithError);
+                saveMessages(updatedMessagesWithError);
             }
         }
     };
 
     return (
         <SafeAreaView>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                keyboardVerticalOffset={Platform.OS === 'ios' ? 110 : 90}  // 키보드가 올라왔을 때의 오프셋 조정
+                style={{ flex: 1 }}
+            >
             <Container>
                 <MessagesContainer
                     ref={scrollViewRef}
@@ -59,12 +114,14 @@ const Chatting = () => {
                         onChangeText={setInputText}
                         placeholder="Type a message..."
                         multiline={true}
+                        scrollEnabled={false}
                     />
                     <SendButton onPress={handleSend}>
                         <ArrowImage source={require('../assets/arrow.png')} />
                     </SendButton>
                 </InputBar>
             </Container>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };
@@ -89,12 +146,12 @@ const MessagesContainer = styled.ScrollView`
 `;
 
 const MessageBubble = styled.View`
-    background-color: ${({sentByMe}) => (sentByMe ? '#fae100' : '#fff')}; /* 내가 보낸 메시지는 노란색, 상대방 메시지는 흰색 */
+    background-color: ${({sentByMe}) => (sentByMe ? '#FFCD00' : '#fff')};
     padding: 10px;
     border-radius: 20px;
     margin: 5px 0;
-    align-self: ${({sentByMe}) => (sentByMe ? 'flex-end' : 'flex-start')}; /* 내가 보낸 메시지는 오른쪽, 상대방 메시지는 왼쪽 */
-    max-width: 70%; /* 메시지 버블의 최대 너비를 설정하여 화면 폭에 맞게 조절 */
+    align-self: ${({sentByMe}) => (sentByMe ? 'flex-end' : 'flex-start')};
+    max-width: 70%;
 `;
 
 const MessageText = styled.Text`
@@ -118,12 +175,30 @@ const TextInput = styled.TextInput`
     padding: 10px;
     margin-right: 10px;
     background-color: white;
+
+    /* iOS에서 그림자 */
+    shadow-color: #000;
+    shadow-opacity: 0.15;
+    shadow-offset: 2px;
+    shadow-radius: 2px;
+
+    /* Android에서 그림자 */
+    elevation: 2;
 `;
 
 const SendButton = styled.TouchableOpacity`
-    background-color: ${({ isPressed }) => (isPressed ? '#fff' : '#f4e71d')};
+    background-color: ${({ isPressed }) => (isPressed ? '#fff' : '#FFCD00')};
     padding: 10px;
     border-radius: 20px;
+
+    /* iOS에서 그림자 */
+    shadow-color: #000;
+    shadow-opacity: 0.15;
+    shadow-offset: 1px;
+    shadow-radius: 1px;
+
+    /* Android에서 그림자 */
+    elevation: 2;
 `;
 
 const ArrowImage = styled.Image`

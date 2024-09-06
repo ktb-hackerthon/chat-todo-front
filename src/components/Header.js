@@ -23,9 +23,6 @@ const Header = ({ children, style, onMenuPress, onChatPress, onNotificationPress
         <HeaderContainer>
             <HeaderText style={style}>{children}</HeaderText>
             <ButtonContainer>
-                <IconButton onPress={onNotificationPress}>
-                    <Icon>🔔</Icon>
-                </IconButton>
                 <IconButton onPress={onChatPress}>
                     <Icon>{currentScreen === 'Calendar' ? '💬' : '📅'}</Icon>
                 </IconButton>
@@ -47,7 +44,6 @@ const HeaderContainer = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
     padding: 5px;
 `;
 
@@ -74,4 +70,13 @@ const IconButton = styled.TouchableOpacity`
 const Icon = styled.Text`
   font-size: 18px;
   color: #333;
+
+    /* iOS에서 그림자 */
+    shadow-color: #000;
+    shadow-opacity: 0.15;
+    shadow-offset: 2px;
+    shadow-radius: 2px;
+
+    /* Android에서 그림자 */
+    elevation: 3;
 `;

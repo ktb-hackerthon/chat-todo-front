@@ -11,7 +11,7 @@ const CalendarComponent = ({ currentDate, selectedDate, onDayPress, onPressArrow
                 onDayPress={onDayPress}
                 markedDates={{
                     ...markedDates,
-                    [selectedDate]: { selected: true, marked: true, selectedColor: '#191919' }, // 선택된 날짜를 표시
+                    [selectedDate]: { selected: true, marked: true, selectedColor: '#3C1E1E' }, // 선택된 날짜를 표시
                 }}
                 renderHeader={() => null}
                 hideArrows={true}
