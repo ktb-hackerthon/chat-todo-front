@@ -3,14 +3,15 @@ import styled from 'styled-components/native';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 
-const CalendarComponent = ({ currentDate, selectedDate, onDayPress, onPressArrowLeft, onPressArrowRight }) => {
+const CalendarComponent = ({ currentDate, selectedDate, onDayPress, onPressArrowLeft, onPressArrowRight, markedDates }) => {
     return (
         <CalendarContainer>
             <Calendar
                 current={moment(currentDate).format('YYYY-MM-DD')}
                 onDayPress={onDayPress}
                 markedDates={{
-                    [selectedDate]: { selected: true, marked: true, selectedColor: '#191919' },
+                    ...markedDates,
+                    [selectedDate]: { selected: true, marked: true, selectedColor: '#191919' }, // 선택된 날짜를 표시
                 }}
                 renderHeader={() => null}
                 hideArrows={true}
