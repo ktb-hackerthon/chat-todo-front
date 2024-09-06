@@ -2,29 +2,31 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import { KeyboardAvoidingView, Keyboard, Platform, FlatList } from 'react-native';
 
 
-const Chatting = () => {
+const Chatting = ({userId}) => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
-    const scrollViewRef = useRef();
+    //const scrollViewRef = useRef();
+    const flatListRef = useRef();
+    const [keyboardVisible, setKeyboardVisible] = useState(false);
+
+    const loadMessages = async () => {
+        try {
+            const storedMessages = await AsyncStorage.getItem('chatMessages');
+            if (storedMessages) {
+                setMessages(JSON.parse(storedMessages));
+            }
+        } catch (error) {
+            console.error('Error loading messages:', error);
+        }
+    };
 
     // 로컬스토리지에서 메시지 불러오기
     useEffect(() => {
-        const loadMessages = async () => {
-            try {
-                const storedMessages = await AsyncStorage.getItem('chatMessages');
-                if (storedMessages) {
-                    setMessages(JSON.parse(storedMessages));
-                }
-            } catch (error) {
-                console.error('Error loading messages:', error);
-            }
-        };
-
         loadMessages();
-    }, []);
+    });
 
     // 메시지를 로컬 스토리지에 저장
     const saveMessages = async (newMessages) => {
@@ -34,6 +36,36 @@ const Chatting = () => {
             console.error('Error saving messages:', error);
         }
     };
+
+    // 키보드 이벤트 리스너 추가
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => setKeyboardVisible(true)
+        );
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => setKeyboardVisible(false)
+        );
+
+        return () => {
+            keyboardDidShowListener.remove();
+            keyboardDidHideListener.remove();
+        };
+    }, []);
+
+    // 메시지가 추가될 때 스크롤 하단으로 이동
+    // useEffect(() => {
+    //     if (scrollViewRef.current) {
+    //         scrollViewRef.current.scrollToEnd({ animated: true });
+    //     }
+    // }, [messages, keyboardVisible]); // 메시지 추가되거나 키보드가 보일 때 스크롤
+
+    useEffect(() => {
+        if (flatListRef.current) {
+            flatListRef.current.scrollToEnd({ animated: true });
+        }
+    }, [messages, keyboardVisible]);
 
     const handleSend = async () => {
         if (inputText.trim()) {
@@ -49,17 +81,16 @@ const Chatting = () => {
             setInputText('');
 
             try {
-                const userId = await AsyncStorage.getItem('userId');
 
                 // AI request
                 const response = await axios.post('http://43.203.202.150/chat/',
                     {
                         user_input: inputText,
+                        member_id: `${userId}`,
                     },
                     {
                         headers: {
                             'Content-Type': 'application/json',
-                            member_id: `${userId}`,
                         },
                     }
                 );
@@ -90,6 +121,52 @@ const Chatting = () => {
         }
     };
 
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            const currentDateTime = new Date();
+            const koreaOffset = 9 * 60 * 60 * 1000; // UTC+9 시간 오프셋 (9시간)
+            const koreaTime = new Date(currentDateTime.getTime() + koreaOffset).toISOString().slice(0, 19);
+            const timeRange = '00:00:30'; // 30초 간격
+            await fetchNotifications(koreaTime, timeRange);
+        }, 30000); // 30초 간격
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const fetchNotifications = async (koreaTime, timeRange) => {
+        try {
+            const response = await axios.get('http://43.203.202.150/schedules/reminder', {
+                headers: {
+                    member_id: `${userId}`,
+                    'Content-Type': 'application/json',
+                },
+                params: {
+                    current_date_time: koreaTime,
+                    time_range: timeRange,
+                },
+            });
+
+            const data = response.data;
+            if (data) {
+                //console.log("새 알림: ", data);
+                const notificationMessage = { id: Date.now().toString(), text: data, sentByMe: false };
+
+                setMessages((prevMessages) => {
+                    const updatedMessages = [...prevMessages, notificationMessage];
+                    // 최대 50개
+                    if (updatedMessages.length > 50) {
+                        updatedMessages.shift();
+                    }
+
+                    saveMessages(updatedMessages);
+                    return updatedMessages;
+                });
+            }
+        } catch (error) {
+            console.error("알림 가져오기 오류: ", error);
+        }
+    };
+
     return (
         <SafeAreaView>
             <KeyboardAvoidingView
@@ -98,16 +175,30 @@ const Chatting = () => {
                 style={{ flex: 1 }}
             >
             <Container>
-                <MessagesContainer
-                    ref={scrollViewRef}
-                    onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
-                >
-                    {messages.map((message) => (
-                        <MessageBubble key={message.id} sentByMe={message.sentByMe}>
-                            <MessageText sentByMe={message.sentByMe}>{message.text}</MessageText>
+                {/*<MessagesContainer*/}
+                {/*    ref={scrollViewRef}*/}
+                {/*    onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}*/}
+                {/*    keyboardShouldPersistTaps="handled"*/}
+                {/*    contentContainerStyle={{ flexGrow: 1 }}*/}
+                {/*>*/}
+                {/*    {messages.map((message) => (*/}
+                {/*        <MessageBubble key={message.id} sentByMe={message.sentByMe}>*/}
+                {/*            <MessageText sentByMe={message.sentByMe}>{message.text}</MessageText>*/}
+                {/*        </MessageBubble>*/}
+                {/*    ))}*/}
+                {/*</MessagesContainer>*/}
+                <FlatList
+                    ref={flatListRef}
+                    data={messages}
+                    renderItem={({ item }) => (
+                        <MessageBubble sentByMe={item.sentByMe}>
+                            <MessageText sentByMe={item.sentByMe}>{item.text}</MessageText>
                         </MessageBubble>
-                    ))}
-                </MessagesContainer>
+                    )}
+                    keyExtractor={item => item.id}
+                    onContentSizeChange={() => flatListRef.current.scrollToEnd({ animated: true })}
+                    onLayout={() => flatListRef.current.scrollToEnd({ animated: true })}
+                />
                 <InputBar>
                     <TextInput
                         value={inputText}
@@ -152,6 +243,15 @@ const MessageBubble = styled.View`
     margin: 5px 0;
     align-self: ${({sentByMe}) => (sentByMe ? 'flex-end' : 'flex-start')};
     max-width: 70%;
+
+    /* iOS에서 그림자 */
+    shadow-color: #000;
+    shadow-opacity: 0.15;
+    shadow-offset: 2px;
+    shadow-radius: 2px;
+
+    /* Android에서 그림자 */
+    elevation: 2;
 `;
 
 const MessageText = styled.Text`

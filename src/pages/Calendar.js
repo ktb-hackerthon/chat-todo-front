@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
-import {ActivityIndicator, Animated} from 'react-native';
+import {ActivityIndicator, Animated, ScrollView} from 'react-native';
 import CalendarComponent from '../components/CalendarComponent';
 import moment from 'moment';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -8,12 +8,21 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Calendar = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(() => {
+        const currentUtcDate = new Date();
+        const koreaOffset = 9 * 60 * 60 * 1000; // UTC+9 시간 오프셋 (9시간)
+        const koreaDate = new Date(currentUtcDate.getTime() + koreaOffset);
+        return koreaDate.toISOString().split('T')[0]; // 한국 시간의 오늘 날짜
+    });
+    const [currentDate, setCurrentDate] = useState(() => {
+        const currentUtcDate = new Date();
+        const koreaOffset = 9 * 60 * 60 * 1000; // UTC+9 시간 오프셋 (9시간)
+        const koreaDate = new Date(currentUtcDate.getTime() + koreaOffset);
+        return koreaDate;
+    });
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [slideAnim] = useState(new Animated.Value(0));
     const [markedDates, setMarkedDates] = useState({});
-    const [loading, setLoading] = useState(false);
     const [scheduleDetails, setScheduleDetails] = useState([]);
 
     const [openYear, setOpenYear] = useState(false);
@@ -25,23 +34,23 @@ const Calendar = () => {
 
     useEffect(() => {
         fetchSchedules(); // 컴포넌트가 마운트될 때 일정을 가져옴
+        fetchScheduleDetails(new Date().toISOString().split('T')[0]);
     }, [currentDate]);
 
     const fetchSchedules = async () => {
-        setLoading(true);
-
         try {
             const userId = await AsyncStorage.getItem('userId');
             const startDate = moment(currentDate).startOf('month').format('YYYY-MM-DD');
             const endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-
+            console.log(startDate);
+            console.log(endDate);
             if (!userId) {
                 console.error("No userId found in local storage");
                 return;
             }
 
             // 백엔드로 요청 보내기
-            const response = await axios.get('http://43.203.202.150/schedules/', {
+            const response = await axios.get('http://43.203.202.150/schedules', {
                 headers: {
                     member_id: userId,
                     'Content-Type': 'application/json',
@@ -54,6 +63,7 @@ const Calendar = () => {
 
             const schedules = response.data;
             const newMarkedDates = {};
+            console.log(response.data);
 
             // 일정이 있는 날짜에 표시
             schedules.forEach(schedule => {
@@ -69,18 +79,15 @@ const Calendar = () => {
             setMarkedDates(newMarkedDates); // markedDates 상태에 반영
         } catch (error) {
             console.error("Failed to fetch schedules:", error);
-        } finally {
-            setLoading(false);
         }
     };
 
     // 선택한 날짜의 세부 일정을 가져오는 함수
     const fetchScheduleDetails = async (date) => {
-        setLoading(true);
         try {
             const userId = await AsyncStorage.getItem('userId');
 
-            const response = await axios.get('http://43.203.202.150/schedules/search/', {
+            const response = await axios.get('http://43.203.202.150/schedules/search', {
                 headers: { member_id: userId },
                 params: { start_date: date, end_date: date },  // 선택한 날짜의 일정 가져오기
             });
@@ -88,8 +95,6 @@ const Calendar = () => {
             setScheduleDetails(response.data);  // 일정 세부 내용 저장
         } catch (error) {
             console.error("Failed to fetch schedule details:", error);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -141,10 +146,6 @@ const Calendar = () => {
         setTimeout(() => setDatePickerVisibility(false), 300); // 애니메이션이 끝난 후 상태 업데이트
     };
 
-    // if (loading) {
-    //     return <ActivityIndicator size="large" color="#0000ff" />;
-    // }
-
     return (
         <SafeAreaView>
             <Container>
@@ -174,16 +175,17 @@ const Calendar = () => {
                     markedDates={markedDates}
                 />
                 <ViewDetail>
-                    <DateDetails>
-                        <DateText>Selected Date: {selectedDate}</DateText>
-                        {scheduleDetails.map(schedule => (
-                            <ScheduleBlock key={schedule.id}>
-                                <Title>{schedule.title}</Title>
-                                <Period>{moment(schedule.start_date_time).format('YYYY-MM-DD HH:mm')} ~ {moment(schedule.end_date_time).format('YYYY-MM-DD HH:mm')}</Period>
-                                <Place>{schedule.place}</Place>
-                            </ScheduleBlock>
-                        ))}
-                    </DateDetails>
+                    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                        <DateDetails>
+                            {scheduleDetails.map(schedule => (
+                                <ScheduleBlock key={schedule.id}>
+                                    <Title>{schedule.title}</Title>
+                                    <Period>{moment(schedule.startDateTime).format('YYYY-MM-DD HH:mm')} ~ {moment(schedule.endDateTime).format('YYYY-MM-DD HH:mm')}</Period>
+                                    <Place>{schedule.place}</Place>
+                                </ScheduleBlock>
+                            ))}
+                        </DateDetails>
+                    </ScrollView>
                 </ViewDetail>
                 {isDatePickerVisible && (
                     <AnimatedPopupView
@@ -287,12 +289,14 @@ const ViewDetail = styled.View`
     background-color: #FFCD00;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    padding: 20px 20px 0 20px;
+    padding: 20px;
     shadow-color: #000;
     shadow-offset: 0px -2px;
     shadow-opacity: 0.3;
     shadow-radius: 4px;
-    elevation: 5;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: column;
 `
 
 const AnimatedPopupView = styled(Animated.View)`
@@ -314,15 +318,8 @@ const AnimatedPopupView = styled(Animated.View)`
 
 const DateDetails = styled.View`
     flex: 1;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-`;
-
-const DateText = styled.Text`
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    width: 100%;
+    align-items: flex-start;
 `;
 
 const PickerContainer = styled.View`
@@ -360,10 +357,20 @@ const DatePickerButtonText = styled.Text`
 `;
 
 const ScheduleBlock = styled.View`
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
+    width: 100%;
+
+    /* iOS에서 그림자 */
+    shadow-color: #000;
+    shadow-opacity: 0.15;
+    shadow-offset: 2px;
+    shadow-radius: 2px;
+
+    /* Android에서 그림자 */
+    elevation: 2;
 `;
 
 const Title = styled.Text`
@@ -380,3 +387,4 @@ const Place = styled.Text`
     font-size: 14px;
     color: #555;
 `;
+
