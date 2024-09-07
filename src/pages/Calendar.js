@@ -65,10 +65,10 @@ const Calendar = () => {
             // 일정이 있는 날짜에 표시
             schedules.forEach(schedule => {
                 const { date, count } = schedule;
-                if (count > 1) {
+                if (count >= 1) {
                     newMarkedDates[date] = {
                         marked: true,
-                        dotColor: '#3C1E1E', // 일정이 있는 날 연한색 동그라미
+                        dotColor: '#3C1E1E',
                     };
                 }
             });
@@ -78,6 +78,10 @@ const Calendar = () => {
             console.error("Failed to fetch schedules:", error);
         }
     };
+
+    useEffect(() => {
+        console.log('Updated markedDates:', markedDates);
+    }, [markedDates]);
 
     // 선택한 날짜의 세부 일정을 가져오는 함수
     const fetchScheduleDetails = async (date) => {

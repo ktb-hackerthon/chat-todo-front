@@ -22,10 +22,10 @@ const App = () => {
                     });
                     await AsyncStorage.setItem('userId', newUserId);
                     setUserId(newUserId);
-                    alert("새 아이디: "+ newUserId);
+                    //alert("새 아이디: "+ newUserId);
                 } else {
                     setUserId(storedUserId);
-                    alert("저장된 아이디: "+ storedUserId);
+                    //alert("저장된 아이디: "+ storedUserId);
                 }
             } catch (error) {
                 alert("에러");
