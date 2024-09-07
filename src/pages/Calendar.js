@@ -42,8 +42,6 @@ const Calendar = () => {
             const userId = await AsyncStorage.getItem('userId');
             const startDate = moment(currentDate).startOf('month').format('YYYY-MM-DD');
             const endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            console.log(startDate);
-            console.log(endDate);
             if (!userId) {
                 console.error("No userId found in local storage");
                 return;
@@ -63,7 +61,6 @@ const Calendar = () => {
 
             const schedules = response.data;
             const newMarkedDates = {};
-            console.log(response.data);
 
             // 일정이 있는 날짜에 표시
             schedules.forEach(schedule => {
@@ -71,7 +68,7 @@ const Calendar = () => {
                 if (count > 1) {
                     newMarkedDates[date] = {
                         marked: true,
-                        dotColor: '#fff6ac', // 일정이 있는 날 연한색 동그라미
+                        dotColor: '#3C1E1E', // 일정이 있는 날 연한색 동그라미
                     };
                 }
             });
@@ -166,8 +163,7 @@ const Calendar = () => {
                     </ButtonContainer>
                 </HeaderContainer>
                 <CalendarComponent
-                    key={currentDate}
-                    currentDate={currentDate}
+                    currentDate={moment(currentDate).format('YYYY-MM-DD')}
                     selectedDate={selectedDate}
                     onDayPress={handleDayPress}
                     onPressArrowLeft={handlePrevMonth}
@@ -360,7 +356,7 @@ const ScheduleBlock = styled.View`
     background-color: #ffffff;
     padding: 10px;
     margin: 5px 0;
-    border-radius: 5px;
+    border-radius: 20px;
     width: 100%;
 
     /* iOS에서 그림자 */

@@ -5,6 +5,7 @@ import Calendar from './src/pages/Calendar';
 import Chatting from './src/pages/Chatting';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { v4 as uuidv4 } from 'uuid';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
     const [currentScreen, setCurrentScreen] = useState('Chatting');
@@ -39,17 +40,19 @@ const App = () => {
     };
 
     return (
-      <SafeAreaView currentScreen={currentScreen}>
-        <Container>
-            <Header
-                onMenuPress={() => console.log('Menu pressed')}
-                onNotificationPress={() => console.log('Notification pressed')}
-                onChatPress={handleNavigate}
-                currentScreen={currentScreen}
-            />
-            {currentScreen === 'Calendar' ? <Calendar /> : <Chatting userId={userId} />}
-        </Container>
-      </SafeAreaView>
+        <SafeAreaProvider>
+              <SafeAreaView currentScreen={currentScreen}>
+                <Container>
+                    <Header
+                        onMenuPress={() => console.log('Menu pressed')}
+                        onNotificationPress={() => console.log('Notification pressed')}
+                        onChatPress={handleNavigate}
+                        currentScreen={currentScreen}
+                    />
+                    {currentScreen === 'Calendar' ? <Calendar /> : <Chatting userId={userId} />}
+                </Container>
+              </SafeAreaView>
+        </SafeAreaProvider>
     );
 };
 

@@ -1,16 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { KeyboardAvoidingView, Keyboard, Platform, FlatList } from 'react-native';
-
+import { FlatList, View, Keyboard, KeyboardAvoidingView, Platform, InputAccessoryView } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Chatting = ({userId}) => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
-    //const scrollViewRef = useRef();
     const flatListRef = useRef();
-    const [keyboardVisible, setKeyboardVisible] = useState(false);
+    const inset = useSafeAreaInsets();
 
     const loadMessages = async () => {
         try {
@@ -23,10 +22,10 @@ const Chatting = ({userId}) => {
         }
     };
 
-    // 로컬스토리지에서 메시지 불러오기
+    // 로컬 스토리지에서 메시지 불러오기
     useEffect(() => {
         loadMessages();
-    });
+    }, []);
 
     // 메시지를 로컬 스토리지에 저장
     const saveMessages = async (newMessages) => {
@@ -36,36 +35,6 @@ const Chatting = ({userId}) => {
             console.error('Error saving messages:', error);
         }
     };
-
-    // 키보드 이벤트 리스너 추가
-    useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener(
-            'keyboardDidShow',
-            () => setKeyboardVisible(true)
-        );
-        const keyboardDidHideListener = Keyboard.addListener(
-            'keyboardDidHide',
-            () => setKeyboardVisible(false)
-        );
-
-        return () => {
-            keyboardDidShowListener.remove();
-            keyboardDidHideListener.remove();
-        };
-    }, []);
-
-    // 메시지가 추가될 때 스크롤 하단으로 이동
-    // useEffect(() => {
-    //     if (scrollViewRef.current) {
-    //         scrollViewRef.current.scrollToEnd({ animated: true });
-    //     }
-    // }, [messages, keyboardVisible]); // 메시지 추가되거나 키보드가 보일 때 스크롤
-
-    useEffect(() => {
-        if (flatListRef.current) {
-            flatListRef.current.scrollToEnd({ animated: true });
-        }
-    }, [messages, keyboardVisible]);
 
     const handleSend = async () => {
         if (inputText.trim()) {
@@ -81,19 +50,15 @@ const Chatting = ({userId}) => {
             setInputText('');
 
             try {
-
                 // AI request
-                const response = await axios.post('http://43.203.202.150/chat/',
-                    {
-                        user_input: inputText,
-                        member_id: `${userId}`,
+                const response = await axios.post('http://43.203.202.150/chat/', {
+                    user_input: inputText,
+                    member_id: `${userId}`,
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
+                });
 
                 // response success
                 const aiMessage = { id: Date.now().toString(), text: response.data.response, sentByMe: false };
@@ -148,7 +113,6 @@ const Chatting = ({userId}) => {
 
             const data = response.data;
             if (data) {
-                //console.log("새 알림: ", data);
                 const notificationMessage = { id: Date.now().toString(), text: data, sentByMe: false };
 
                 setMessages((prevMessages) => {
@@ -167,53 +131,63 @@ const Chatting = ({userId}) => {
         }
     };
 
+    const renderItem = ({ item }) => (
+        <MessageBubble sentByMe={item.sentByMe}>
+            <MessageText sentByMe={item.sentByMe}>{item.text}</MessageText>
+        </MessageBubble>
+    );
+
+
     return (
-        <SafeAreaView>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                keyboardVerticalOffset={Platform.OS === 'ios' ? 110 : 90}  // 키보드가 올라왔을 때의 오프셋 조정
-                style={{ flex: 1 }}
-            >
-            <Container>
-                {/*<MessagesContainer*/}
-                {/*    ref={scrollViewRef}*/}
-                {/*    onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}*/}
-                {/*    keyboardShouldPersistTaps="handled"*/}
-                {/*    contentContainerStyle={{ flexGrow: 1 }}*/}
-                {/*>*/}
-                {/*    {messages.map((message) => (*/}
-                {/*        <MessageBubble key={message.id} sentByMe={message.sentByMe}>*/}
-                {/*            <MessageText sentByMe={message.sentByMe}>{message.text}</MessageText>*/}
-                {/*        </MessageBubble>*/}
-                {/*    ))}*/}
-                {/*</MessagesContainer>*/}
-                <FlatList
-                    ref={flatListRef}
-                    data={messages}
-                    renderItem={({ item }) => (
-                        <MessageBubble sentByMe={item.sentByMe}>
-                            <MessageText sentByMe={item.sentByMe}>{item.text}</MessageText>
-                        </MessageBubble>
-                    )}
-                    keyExtractor={item => item.id}
-                    onContentSizeChange={() => flatListRef.current.scrollToEnd({ animated: true })}
-                    onLayout={() => flatListRef.current.scrollToEnd({ animated: true })}
-                />
-                <InputBar>
-                    <TextInput
-                        value={inputText}
-                        onChangeText={setInputText}
-                        placeholder="Type a message..."
-                        multiline={true}
-                        scrollEnabled={false}
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? inset.bottom : 10}
+        >
+            <SafeAreaView>
+                <Container>
+                    <FlatList
+                        ref={flatListRef}
+                        data={messages}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                        onContentSizeChange={() => {
+                            if (flatListRef.current && messages.length > 0) {
+                                flatListRef.current.scrollToEnd({ animated: false });
+                            }
+                        }}
                     />
-                    <SendButton onPress={handleSend}>
-                        <ArrowImage source={require('../assets/arrow.png')} />
-                    </SendButton>
-                </InputBar>
-            </Container>
-            </KeyboardAvoidingView>
-        </SafeAreaView>
+                    {Platform.OS === 'ios' && (
+                        <InputAccessoryView>
+                            <InputBar>
+                                <TextInput
+                                    value={inputText}
+                                    onChangeText={setInputText}
+                                    placeholder="메시지를 입력하세요..."
+                                    multiline={true}
+                                />
+                                <SendButton onPress={handleSend}>
+                                    <ArrowImage source={require('../assets/arrow.png')} />
+                                </SendButton>
+                            </InputBar>
+                        </InputAccessoryView>
+                    )}
+                    {Platform.OS === 'android' && (
+                        <InputBar>
+                            <TextInput
+                                value={inputText}
+                                onChangeText={setInputText}
+                                placeholder="메시지를 입력하세요..."
+                                multiline={true}
+                            />
+                            <SendButton onPress={handleSend}>
+                                <ArrowImage source={require('../assets/arrow.png')} />
+                            </SendButton>
+                        </InputBar>
+                    )}
+                </Container>
+            </SafeAreaView>
+        </KeyboardAvoidingView>
     );
 };
 
@@ -231,11 +205,6 @@ const Container = styled.View`
     justify-content: space-between;
 `;
 
-const MessagesContainer = styled.ScrollView`
-    flex: 1;
-    margin-bottom: 10px;
-`;
-
 const MessageBubble = styled.View`
     background-color: ${({sentByMe}) => (sentByMe ? '#FFCD00' : '#fff')};
     padding: 10px;
@@ -243,15 +212,6 @@ const MessageBubble = styled.View`
     margin: 5px 0;
     align-self: ${({sentByMe}) => (sentByMe ? 'flex-end' : 'flex-start')};
     max-width: 70%;
-
-    /* iOS에서 그림자 */
-    shadow-color: #000;
-    shadow-opacity: 0.15;
-    shadow-offset: 2px;
-    shadow-radius: 2px;
-
-    /* Android에서 그림자 */
-    elevation: 2;
 `;
 
 const MessageText = styled.Text`
@@ -264,6 +224,7 @@ const InputBar = styled.View`
     align-items: center;
     padding: 10px;
     border-top-color: #ccc;
+    height: 60px;
 `;
 
 const TextInput = styled.TextInput`
@@ -275,30 +236,12 @@ const TextInput = styled.TextInput`
     padding: 10px;
     margin-right: 10px;
     background-color: white;
-
-    /* iOS에서 그림자 */
-    shadow-color: #000;
-    shadow-opacity: 0.15;
-    shadow-offset: 2px;
-    shadow-radius: 2px;
-
-    /* Android에서 그림자 */
-    elevation: 2;
 `;
 
 const SendButton = styled.TouchableOpacity`
     background-color: ${({ isPressed }) => (isPressed ? '#fff' : '#FFCD00')};
     padding: 10px;
     border-radius: 20px;
-
-    /* iOS에서 그림자 */
-    shadow-color: #000;
-    shadow-opacity: 0.15;
-    shadow-offset: 1px;
-    shadow-radius: 1px;
-
-    /* Android에서 그림자 */
-    elevation: 2;
 `;
 
 const ArrowImage = styled.Image`
