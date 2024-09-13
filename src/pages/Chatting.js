@@ -25,6 +25,7 @@ const Chatting = ({userId}) => {
     // 로컬 스토리지에서 메시지 불러오기
     useEffect(() => {
         loadMessages();
+        clearChatMessages();
     }, []);
 
     // 메시지를 로컬 스토리지에 저장
@@ -131,6 +132,16 @@ const Chatting = ({userId}) => {
         }
     };
 
+    const clearChatMessages = async () => {
+        try {
+            await AsyncStorage.removeItem('chatMessages');
+            setMessages([]); // 상태도 초기화하여 화면에서 메시지 제거
+            console.log('Chat messages cleared successfully');
+        } catch (error) {
+            console.error('Error clearing chat messages:', error);
+        }
+    };
+
     const renderItem = ({ item }) => (
         <MessageBubble sentByMe={item.sentByMe}>
             <MessageText sentByMe={item.sentByMe}>{item.text}</MessageText>
@@ -159,7 +170,7 @@ const Chatting = ({userId}) => {
                     />
                     {Platform.OS === 'ios' && (
                         <InputAccessoryView>
-                            <InputBar>
+                            <InputBar>c
                                 <TextInput
                                     value={inputText}
                                     onChangeText={setInputText}
@@ -224,12 +235,13 @@ const InputBar = styled.View`
     align-items: center;
     padding: 10px;
     border-top-color: #ccc;
-    height: 60px;
+    height: auto;
 `;
 
 const TextInput = styled.TextInput`
     flex: 1;
     height: 40px;
+    max-height: 120px;
     border-width: 1px;
     border-color: #ccc;
     border-radius: 20px;

@@ -79,9 +79,9 @@ const Calendar = () => {
         }
     };
 
-    useEffect(() => {
-        console.log('Updated markedDates:', markedDates);
-    }, [markedDates]);
+    // useEffect(() => {
+    //     console.log('Updated markedDates:', markedDates);
+    // }, [markedDates]);
 
     // 선택한 날짜의 세부 일정을 가져오는 함수
     const fetchScheduleDetails = async (date) => {
